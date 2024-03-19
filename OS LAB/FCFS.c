@@ -20,7 +20,7 @@ void main()
 	printf("\n\nTotal Turn Around Time : %d",FCFS_tat);
 	printf("\n Avarage Turn Around Time : %d",FCFS_tat/n);
 	printf("\n Total Waiting Time : %d",FCFS_wt);
-	printf("Total avg. Waiting Time : %d",FCFS_wt/n);
+	printf("\nTotal avg. Waiting Time : %d",FCFS_wt/n);
 	//getch();
 }
 
@@ -32,6 +32,7 @@ int WT_TAT(int *a, int *b)
 		if(i==0)
 		{
 			tat[i]=bt[i];
+			tot_tat=tot_tat+tat[i];
 		}
 		else
 		{
