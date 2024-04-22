@@ -7,14 +7,14 @@ int avail[100];
 int n,r;
 void input();
 void show();
-void cal();
+void calc();
 int main()
 {
 	int i,j;
 	printf("*************BANKAERS algorithm ************");
 	input();
 	show();
-	cal();
+	calc();
 	//getch();
 	return(0);	
 }
@@ -34,7 +34,7 @@ void input()
 			scanf("%d",&max[i][j]);
 		}
 	}
-	printf("Enter the allocation Matrix\m");
+	printf("Enter the allocation Matrix\n");
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<r;j++)
@@ -60,12 +60,12 @@ void show()
 		{
 			printf("%d",alloc[i][j]);
 		}
-		print("\t");
+		printf("\t");
 		for(j=0;j<r;j++)
 		{
 			printf("%d",max[i][j]);
 		}
-		print("\t");
+		printf("\t");
 		if(i==0)
 		{
 			for(j=0;j<r;j++)
