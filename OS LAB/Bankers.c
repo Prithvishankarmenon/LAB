@@ -11,7 +11,7 @@ void calc();
 int main()
 {
 	int i,j;
-	printf("*************BANKAERS algorithm ************");
+	printf("*************BANKAERS algorithm ************\n");
 	input();
 	show();
 	calc();
@@ -58,19 +58,19 @@ void show()
 		printf("\nP%d\t",i+1);
 		for(j=0;j<r;j++)
 		{
-			printf("%d",alloc[i][j]);
+			printf("%d ",alloc[i][j]);
 		}
-		printf("\t");
+		printf("\t\t");
 		for(j=0;j<r;j++)
 		{
-			printf("%d",max[i][j]);
+			printf("%d ",max[i][j]);
 		}
 		printf("\t");
 		if(i==0)
 		{
 			for(j=0;j<r;j++)
 			{
-				printf("%d",avail[i]);
+				printf("%d ",avail[j]);
 			}
 		}
 	}
@@ -78,7 +78,7 @@ void show()
 
 void calc()
 {
-	int finish[100],temp,need[100][100],flag=1,k,c1=1;
+	int finish[100],temp,need[100][100],flag=1,k,c1=0;
 	int safe[100];
 	int i,j;
 	for(i=0;i<n;i++)
@@ -141,5 +141,6 @@ void calc()
 	{
 		printf("\n Process are in dead lock");
 		printf("\n System is in unsafe state");
+		
 	}
 }
