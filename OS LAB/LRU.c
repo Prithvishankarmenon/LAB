@@ -55,5 +55,36 @@ void LRU()
 				fault++;
 			}
 		}
+		printf("\n\nAfter inserting %d the stack status is:",ref[i]);
+		for(j=0;j<top;j++)
+		{
+			printf("%d",stack[j]);
+		}
+	}
+	printf("\n\nEnd to inserting the reference string.");
+	printf("\n\nTotal page fault is %d",fault);
+	printf("\n\nPress any key to continue.");
+}
+
+void main()
+{
+	int x;
+	//freoper("in.cpp","r",stdin);
+	while(1)
+	{
+		printf("\n\n\t------MENU-----");
+		printf("\n\t1.Input");
+		printf("\n\t2.LRU Algorithm");
+		printf("\n\t3.Exit");
+		printf("\n\n\tEnter your choice.");
+		scanf("%d",&x);
+		switch(x)
+		{
+			case 1 : input();
+			 	 break;
+			case 2 : LRU();
+				 break;
+			case 3 : exit(0);	 	 
+		}
 	}
 }
