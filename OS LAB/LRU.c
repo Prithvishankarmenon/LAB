@@ -39,7 +39,7 @@ void LRU()
 			}
 			if(j<n)
 			{
-				for(k=0;k<n-1;k++)
+				for(k=j;k<n-1;k++)
 				{
 					stack[k]=stack[k+1];
 				}
