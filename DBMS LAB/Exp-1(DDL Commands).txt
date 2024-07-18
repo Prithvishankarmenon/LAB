@@ -104,3 +104,35 @@ Query OK, 0 rows affected (0.01 sec)
 mysql> desc student;
 ERROR 1146 (42S02): Table 'prithvi.student' doesn't exist
 mysql> 
+
+
+!!!!!!!!!!!!!!!!!!question!!!!!!!!!!!!!!!!! 
+
+
+
+mysql> 
+mysql> 
+mysql> create table employee
+    -> ;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table employee;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table employee(EMPLOYEE_ID int(10)primary key ,FIRST_NAME varchar(20),LAST_NAME varchar(20),EMAIL varchar(20),PHONE_NUMBER int(10),HIRE_DATE varchar(10),JOB_ID varchar(20),SALARY int(10), MANAGER_ID int(10),DEPARTMENT_ID varchar(10));
+Query OK, 0 rows affected, 4 warnings (0.02 sec)
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int         | NO   | PRI | NULL    |       |
+| FIRST_NAME    | varchar(20) | YES  |     | NULL    |       |
+| LAST_NAME     | varchar(20) | YES  |     | NULL    |       |
+| EMAIL         | varchar(20) | YES  |     | NULL    |       |
+| PHONE_NUMBER  | int         | YES  |     | NULL    |       |
+| HIRE_DATE     | varchar(10) | YES  |     | NULL    |       |
+| JOB_ID        | varchar(20) | YES  |     | NULL    |       |
+| SALARY        | int         | YES  |     | NULL    |       |
+| MANAGER_ID    | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID | varchar(10) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
