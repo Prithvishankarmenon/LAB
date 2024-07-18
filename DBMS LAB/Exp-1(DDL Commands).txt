@@ -104,16 +104,14 @@ Query OK, 0 rows affected (0.01 sec)
 mysql> desc student;
 ERROR 1146 (42S02): Table 'prithvi.student' doesn't exist
 mysql> 
-
-
-!!!!!!!!!!!!!!!!!!question!!!!!!!!!!!!!!!!! 
-
-
-
 mysql> 
 mysql> 
 mysql> create table employee
     -> ;
+
+!!!!!!!!!!!!!!!!!!question!!!!!!!!!!!!!!!!! 
+
+
 ERROR 4028 (HY000): A table must have at least one visible column.
 mysql> create table employee;
 ERROR 4028 (HY000): A table must have at least one visible column.
@@ -136,3 +134,89 @@ mysql> desc employee;
 | DEPARTMENT_ID | varchar(10) | YES  |     | NULL    |       |
 +---------------+-------------+------+-----+---------+-------+
 10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> alter table employee modify DEPARTMENT_ID int(5);
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int         | NO   | PRI | NULL    |       |
+| FIRST_NAME    | varchar(20) | YES  |     | NULL    |       |
+| LAST_NAME     | varchar(20) | YES  |     | NULL    |       |
+| EMAIL         | varchar(20) | YES  |     | NULL    |       |
+| PHONE_NUMBER  | int         | YES  |     | NULL    |       |
+| HIRE_DATE     | varchar(10) | YES  |     | NULL    |       |
+| JOB_ID        | varchar(20) | YES  |     | NULL    |       |
+| SALARY        | int         | YES  |     | NULL    |       |
+| MANAGER_ID    | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> alter table employee add  stdept varchar(20);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int         | NO   | PRI | NULL    |       |
+| FIRST_NAME    | varchar(20) | YES  |     | NULL    |       |
+| LAST_NAME     | varchar(20) | YES  |     | NULL    |       |
+| EMAIL         | varchar(20) | YES  |     | NULL    |       |
+| PHONE_NUMBER  | int         | YES  |     | NULL    |       |
+| HIRE_DATE     | varchar(10) | YES  |     | NULL    |       |
+| JOB_ID        | varchar(20) | YES  |     | NULL    |       |
+| SALARY        | int         | YES  |     | NULL    |       |
+| MANAGER_ID    | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int         | YES  |     | NULL    |       |
+| stdept        | varchar(20) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> alter table employee drop stdept;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int         | NO   | PRI | NULL    |       |
+| FIRST_NAME    | varchar(20) | YES  |     | NULL    |       |
+| LAST_NAME     | varchar(20) | YES  |     | NULL    |       |
+| EMAIL         | varchar(20) | YES  |     | NULL    |       |
+| PHONE_NUMBER  | int         | YES  |     | NULL    |       |
+| HIRE_DATE     | varchar(10) | YES  |     | NULL    |       |
+| JOB_ID        | varchar(20) | YES  |     | NULL    |       |
+| SALARY        | int         | YES  |     | NULL    |       |
+| MANAGER_ID    | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> truncate table employee;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> drop table employee;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> mysql> truncate table employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> truncate table employee' at line 1
+mysql> Query OK, 0 rows affected (0.04 sec)
+    -> 
+    -> mysql> drop table employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected (0.04 sec)
+
+mysql> drop table employee' at line 1
+mysql> Query OK, 0 rows affected (0.01 sec)
+    -> 
+    -> mysql> 
+    -> 
+    -> ^C
+mysql> 
