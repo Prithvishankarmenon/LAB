@@ -590,3 +590,23 @@ mysql>
 
 
 
+mysql> select emp_name from emp where city ='Cochin' and street_no =101;
++----------+
+| emp_name |
++----------+
+| Jones    |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select emp_name from emp where city ='Cochin' or city ='Ernakulam';
++----------+
+| emp_name |
++----------+
+| Cat      |
+| Glenn    |
+| John     |
+| Jones    |
+| Kartik   |
+| Niharika |
++----------+
+6 rows in set (0.00 sec)
