@@ -554,4 +554,39 @@ mysql> select distinct salary from work;
 10 rows in set (0.00 sec)
 
 mysql> 
+mysql> select * from emp where city='Cochin';
++--------+----------+-----------+--------+
+| emp_id | emp_name | street_no | city   |
++--------+----------+-----------+--------+
+| E-103  | Cat      |       102 | Cochin |
+| E-107  | John     |       102 | Cochin |
+| E-108  | Jones    |       101 | Cochin |
++--------+----------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from work where salary between 30000 and 60000;
++--------+--------------+--------+
+| emp_id | company_name | salary |
++--------+--------------+--------+
+| E-103  | SBT          |  40000 |
+| E-104  | Fedral       |  37000 |
+| E-107  | SBI          |  33000 |
+| E-111  | Fedral       |  40000 |
++--------+--------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select emp_name from emp where city like'C%';
++----------+
+| emp_name |
++----------+
+| Cat      |
+| John     |
+| Jones    |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+
+
+
 
