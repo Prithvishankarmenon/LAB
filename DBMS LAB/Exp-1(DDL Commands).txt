@@ -463,9 +463,9 @@ mysql>
 
 
 ********************************************************************************************
-  ::::::::::::::::::ENTERING INFO IS :::::::::::
+  ::::::::::::::::::ENTERING INFO IS :::::::::::                                           
 
-insert into emp values('E-101','Adarsh',101,'MG Road');
+insert into emp values('E-101','Adarsh',101,'MG Road');                                     
 insert into emp values('E-102','Bonny',101,'MG Road');
 insert into emp values('E-103','Cat',102,'Cochin');
 insert into emp values('E-104','Glenn',104,'Ernakulam');
@@ -519,3 +519,39 @@ insert into manages values('E-111',Null);
 
 
 ********************************************************************************************
+
+
+
+mysql> alter table works rename work;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_prithvi |
++-------------------+
+| company           |
+| emp               |
+| manages           |
+| work              |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct salary from work;
++--------+
+| salary |
++--------+
+|  71000 |
+|  90000 |
+|  40000 |
+|  37000 |
+|  17000 |
+|  22000 |
+|  33000 |
+|  18000 |
+|  28000 |
+| 250000 |
++--------+
+10 rows in set (0.00 sec)
+
+mysql> 
+
