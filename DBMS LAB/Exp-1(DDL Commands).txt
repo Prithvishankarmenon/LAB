@@ -305,4 +305,217 @@ mysql> show tables;
 
 mysql> ^C
 mysql> 
+mysql> insert into emp values('E-101','Adarsh',101,'MG Road');
+Query OK, 1 row affected (0.01 sec)
 
+mysql> insert into emp values('E-102','Bonny',101,'MG Road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-103','Cat',102,'Cochin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-104','Glenn',104,'Ernakulam');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-105','George',201,'MG Road');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp values('E-106','Hay',101,'MG Road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-107','John',102,'Cochin');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp values('E-108','Jones',101,'Cochin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-109','Kartik',101,'Ernakulam');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-110','Lava',101,'Palace Road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values('E-111','Niharika',102,'Ernakulam');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into company values('SBI','MG Road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into company values('SBT','MG Road');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into company values('Fedral','Broadway');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_id    | char(8)     | NO   | PRI | NULL    |       |
+| emp_name  | varchar(18) | YES  |     | NULL    |       |
+| street_no | int         | YES  |     | NULL    |       |
+| city      | varchar(18) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp;
++--------+----------+-----------+-------------+
+| emp_id | emp_name | street_no | city        |
++--------+----------+-----------+-------------+
+| E-101  | Adarsh   |       101 | MG Road     |
+| E-102  | Bonny    |       101 | MG Road     |
+| E-103  | Cat      |       102 | Cochin      |
+| E-104  | Glenn    |       104 | Ernakulam   |
+| E-105  | George   |       201 | MG Road     |
+| E-106  | Hay      |       101 | MG Road     |
+| E-107  | John     |       102 | Cochin      |
+| E-108  | Jones    |       101 | Cochin      |
+| E-109  | Kartik   |       101 | Ernakulam   |
+| E-110  | Lava     |       101 | Palace Road |
+| E-111  | Niharika |       102 | Ernakulam   |
++--------+----------+-----------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> insert into company values('Indian Bank','Cochin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into company values('SIB','Ernakulam');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into company values('HDFC','MG Road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into company values('Axis','Palace Road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into company values('City BAnk','Ernakulam');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into works values('E-101','SBI',71000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into works values('E-102','SBI',90000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into works values('E-103','SBT',40000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into works values('E-104','Fedral',37000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into works values('E-105','SBT',17000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into works values('E-106','SBI',22000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into works values('E-107','SBI',33000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into works values('E-108','SBI',18000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into works values('E-109','Indian Bank',28000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into works values('E-110','SBT',250000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into works values('E-111','Fedral',40000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-101','E-102');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into manages values('E-102',Null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-103','E-110');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-104','E-111');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-105','E-110');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into manages values('E-106','E-109');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-107',Null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-108',Null);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into manages values('E-109',Null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-110',Null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into manages values('E-111',Null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+
+
+
+
+********************************************************************************************
+  ::::::::::::::::::ENTERING INFO IS :::::::::::
+
+insert into emp values('E-101','Adarsh',101,'MG Road');
+insert into emp values('E-102','Bonny',101,'MG Road');
+insert into emp values('E-103','Cat',102,'Cochin');
+insert into emp values('E-104','Glenn',104,'Ernakulam');
+insert into emp values('E-105','George',201,'MG Road');
+insert into emp values('E-106','Hay',101,'MG Road');
+insert into emp values('E-107','John',102,'Cochin');
+insert into emp values('E-108','Jones',101,'Cochin');
+insert into emp values('E-109','Kartik',101,'Ernakulam');
+insert into emp values('E-110','Lava',101,'Palace Road');
+insert into emp values('E-111','Niharika',102,'Ernakulam');
+
+
+insert into company values('SBI','MG Road');
+insert into company values('SBT','MG Road');
+insert into company values('Fedral','Broadway');
+insert into company values('Indian Bank','Cochin');
+insert into company values('SIB','Ernakulam');
+insert into company values('HDFC','MG Road');
+insert into company values('Axis','Palace Road');
+insert into company values('City BAnk','Ernakulam');
+
+
+insert into works values('E-101','SBI',71000);
+insert into works values('E-102','SBI',90000);
+insert into works values('E-103','SBT',40000);
+insert into works values('E-104','Fedral',37000);
+insert into works values('E-105','SBT',17000);
+
+insert into works values('E-106','SBI',22000);
+insert into works values('E-107','SBI',33000);
+insert into works values('E-108','SBI',18000);
+insert into works values('E-109','Indian Bank',28000);
+insert into works values('E-110','SBT',250000);
+insert into works values('E-111','Fedral',40000);
+
+
+insert into manages values('E-101','E-102');
+insert into manages values('E-102',Null);
+insert into manages values('E-103','E-110');
+insert into manages values('E-104','E-111');
+insert into manages values('E-105','E-110');
+insert into manages values('E-106','E-109');
+insert into manages values('E-107',Null);
+insert into manages values('E-108',Null);
+insert into manages values('E-109',Null);
+insert into manages values('E-110',Null);
+insert into manages values('E-111',Null);
+
+
+
+
+
+********************************************************************************************
