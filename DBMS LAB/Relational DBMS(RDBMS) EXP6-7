@@ -1,0 +1,477 @@
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_prithvi |
++-------------------+
+| company           |
+| emp               |
+| manages           |
+| work              |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select ABS(-100) from dual;
++-----------+
+| ABS(-100) |
++-----------+
+|       100 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select floor(2345.78) from dual;
++----------------+
+| floor(2345.78) |
++----------------+
+|           2345 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select greatest(23,25,67,88,97) from dual;
++--------------------------+
+| greatest(23,25,67,88,97) |
++--------------------------+
+|                       97 |
++--------------------------+
+1 row in set (0.01 sec)
+
+mysql> select least(23,25,67,88,97) from dual;
++-----------------------+
+| least(23,25,67,88,97) |
++-----------------------+
+|                    23 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select length(15231753) from dual;
++------------------+
+| length(15231753) |
++------------------+
+|                8 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(144) from dual;
++-----------+
+| sqrt(144) |
++-----------+
+|        12 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select length('prithvi') from dual;
++-------------------+
+| length('prithvi') |
++-------------------+
+|                 7 |
++-------------------+
+1 row in set (0.00 sec)
+
+
+mysql> select sqrt(99) from dual;
++-----------------+
+| sqrt(99)        |
++-----------------+
+| 9.9498743710662 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select power(2,4) from dual;
++------------+
+| power(2,4) |
++------------+
+|         16 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select power(2,10) from dual;
++-------------+
+| power(2,10) |
++-------------+
+|        1024 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select round(5.124) from dual;
++--------------+
+| round(5.124) |
++--------------+
+|            5 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select round(5.724) from dual;
++--------------+
+| round(5.724) |
++--------------+
+|            6 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select sin(90) from dual;
++--------------------+
+| sin(90)            |
++--------------------+
+| 0.8939966636005579 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select cos(45) from dual;
++--------------------+
+| cos(45)            |
++--------------------+
+| 0.5253219888177297 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select tan(30) from dual;
++--------------------+
+| tan(30)            |
++--------------------+
+| -6.405331196646276 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select sin(0) from dual;
++--------+
+| sin(0) |
++--------+
+|      0 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select sin(180) from dual;
++---------------------+
+| sin(180)            |
++---------------------+
+| -0.8011526357338304 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select cos(0) from dual;
++--------+
+| cos(0) |
++--------+
+|      1 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select sign(10) from dual;
++----------+
+| sign(10) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sign(0) from dual;
++---------+
+| sign(0) |
++---------+
+|       0 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select sign(-1000) from dual;
++-------------+
+| sign(-1000) |
++-------------+
+|          -1 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sign(-200) from dual;
++------------+
+| sign(-200) |
++------------+
+|         -1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ln(100) from dual;
++-------------------+
+| ln(100)           |
++-------------------+
+| 4.605170185988092 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select ln(0) from dual;
++-------+
+| ln(0) |
++-------+
+|  NULL |
++-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select log(10,100) from dual;
++-------------+
+| log(10,100) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+
+mysql> select mod(4,3) from dual;
++----------+
+| mod(4,3) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select mod(4,2) from dual;
++----------+
+| mod(4,2) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select mod(2,4) from dual;
++----------+
+| mod(2,4) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select exp(2) from dual;
++------------------+
+| exp(2)           |
++------------------+
+| 7.38905609893065 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select exp(-2) from dual;
++--------------------+
+| exp(-2)            |
++--------------------+
+| 0.1353352832366127 |
++--------------------+
+1 row in set (0.00 sec)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!DATA FUNCTIONS!!!!!!!!!!!!!!!!!!!!
+
+mysql> select current_date from dual;
++--------------+
+| current_date |
++--------------+
+| 2024-08-24   |
++--------------+ifconfig
+1 row in set (0.00 sec)
+
+mysql> select extract(year from SYSDATE()) from dual;
++------------------------------+
+| extract(year from SYSDATE()) |
++------------------------------+
+|                         2024 |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select extract(day from SYSDATE()) from dual;
++-----------------------------+
+| extract(day from SYSDATE()) |
++-----------------------------+
+|                          24 |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select extract(month from SYSDATE()) from dual;
++-------------------------------+
+| extract(month from SYSDATE()) |
++-------------------------------+
+|                             8 |
++-------------------------------+
+1 row in set (0.00 sec)
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!STRING FUNCTION!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+mysql> select ascii('a') from dual;
++------------+
+| ascii('a') |
++------------+
+|         97 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('A') from dual;
++------------+
+| ascii('A') |
++------------+
+|         65 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select upper('hi this is PRITHVI typing from this computer') fr
+om dual;
++-------------------------------------------------------+
+| upper('hi this is PRITHVI typing from this computer') |
++-------------------------------------------------------+
+| HI THIS IS PRITHVI TYPING FROM THIS COMPUTER          |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower('HI THIS IS PRITHVI TYPING FROM THIS COMPUTER  ')
+from dual;
++---------------------------------------------------------+
+| lower('HI THIS IS PRITHVI TYPING FROM THIS COMPUTER  ') |
++---------------------------------------------------------+
+| hi this is prithvi typing from this computer            |
++---------------------------------------------------------+
+1 row in set (0.00 sec)
+
+
+mysql> select replace('HELLO','H','K') from dual;
++--------------------------+
+| replace('HELLO','H','K') |
++--------------------------+
+| KELLO                    |
++--------------------------+
+1 row in set (0.00 sec)
+
+
+mysql> select TRIM('a' from 'anaconda') from dual;
++---------------------------+
+| TRIM('a' from 'anaconda') |
++---------------------------+
+| nacond                    |
++---------------------------+
+1 row in set (0.00 sec)
+
+!!!!!!!!!!!!!!!!!!!EXPERIMENT 7!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+create table Faculty(FacultyCode int(8),FacultyName varchar(15));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> create table Subject(SubjectCode int(8),SubjectName varchar(15),MaxMark int(4),FacultyCode int(8) references Faculty(FacultyCode));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+create table Student(StudentCode int(8),StudentName varchar(15),DOB date,StudentBranch varchar(2));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+
+create table M_Mark(StudentCode int(8) references Student(StudentCode),SubjectCode int(8) references Subject(SubjectCode),Mark int(4));
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+ insert into Faculty value(001,'Teacher_1');
+ insert into Faculty value(002,'Teacher_2');
+ insert into Faculty value(003,'Teacher_3');
+ insert into Faculty value(004,'Teacher_4');
+ insert into Faculty value(005,'Teacher_5');
+ insert into Faculty value(006,'Teacher_6');
+ insert into Faculty value(007,'Teacher_7');
+ insert into Faculty value(008,'Teacher_8');
+ insert into Faculty value(009,'Teacher_9');
+ insert into Faculty value(010,'Teacher_10');
+
+ insert into Subject value(001,'Subject_1',100,001);
+ insert into Subject value(002,'Subject_2',100,002);
+ insert into Subject value(003,'Subject_3',100,003);
+ insert into Subject value(004,'Subject_4',100,004);
+ insert into Subject value(005,'Subject_5',100,005);
+ insert into Subject value(006,'Subject_6',100,006);
+   
+ insert into Student value(001,'Student_1','2004-01-01',"CS",'2014-01-01');
+ insert into Student value(002,'Student_2','2004-01-01',"ME",'2014-01-01');
+  insert into Student value(003,'Student_3','2004-01-01',"AD",'2014-01-01');
+   insert into Student value(004,'Student_4','2004-01-01',"EC",'2014-01-01');
+    insert into Student value(005,'Student_5','2004-01-01',"AD",'2014-01-01');
+     insert into Student value(006,'Student_6','2004-01-01',"CS",'2014-01-01');
+      insert into Student value(007,'Student_7','2004-01-01',"ME",'2014-01-01');
+       insert into Student value(008,'Student_8','2004-01-01',"CS",'2014-01-01'); 
+       
+       
+       
+       
+ insert into M_Mark value(001,001,10);
+ insert into M_Mark value(001,002,10);
+ insert into M_Mark value(001,003,10);
+ insert into M_Mark value(001,004,10);
+ insert into M_Mark value(001,005,10);
+ insert into M_Mark value(001,006,10);
+ 
+ insert into M_Mark value(002,001,20);
+ insert into M_Mark value(002,002,20);
+insert into M_Mark value(002,003,20);
+insert into M_Mark value(002,004,20);
+insert into M_Mark value(002,005,20);
+insert into M_Mark value(002,006,20);
+
+insert into M_Mark value(003,001,30);
+insert into M_Mark value(003,002,30); 
+insert into M_Mark value(003,003,30); 
+insert into M_Mark value(003,004,30); 
+insert into M_Mark value(003,005,30); 
+insert into M_Mark value(003,006,30); 
+
+insert into M_Mark value(005,001,40);
+insert into M_Mark value(005,002,40);  
+insert into M_Mark value(005,003,40);  
+insert into M_Mark value(005,004,40);  
+insert into M_Mark value(005,005,40);  
+insert into M_Mark value(005,006,40);  
+
+insert into M_Mark value(006,001,50);
+insert into M_Mark value(006,002,50);
+insert into M_Mark value(006,003,50);
+insert into M_Mark value(006,004,50);
+insert into M_Mark value(006,005,50);
+insert into M_Mark value(006,006,50);
+
+insert into M_Mark value(007,001,60);
+insert into M_Mark value(007,002,60);
+insert into M_Mark value(007,003,60);
+insert into M_Mark value(007,004,60);
+insert into M_Mark value(007,005,60);
+insert into M_Mark value(007,006,60);
+
+insert into M_Mark value(008,001,70);
+insert into M_Mark value(008,002,70);
+insert into M_Mark value(008,003,70);
+insert into M_Mark value(008,004,70);
+insert into M_Mark value(008,005,70);
+insert into M_Mark value(008,006,70);
+    
+ 
+          
+insert into M_Mark value(004,001,80);
+insert into M_Mark value(004,002,80);
+insert into M_Mark value(004,003,80);
+insert into M_Mark value(004,004,80);
+insert into M_Mark value(004,005,80);
+insert into M_Mark value(004,006,80);
+    
+      
+!!!!!!!!!!!!!!!!!!!!!!!!!QUESTIONS!!!!!!!!!!!!!!!!!!!!!
+mysql> select count(*) "no of faculty" from Faculty;
++---------------+
+| no of faculty |
++---------------+
+|            10 |
++---------------+
+1 row in set (0.00 sec)
+
+
+mysql> select StudentName,sum(mark)"Total mark" from M_Mark,Student where Student.StudentCode=M_Mark.StudentCode group by StudentName;
++-------------+------------+
+| StudentName | Total mark |
++-------------+------------+
+| Student_1   |         60 |
+| Student_2   |        120 |
+| Student_3   |        180 |
+| Student_5   |        240 |
+| Student_6   |        300 |
+| Student_7   |        360 |
+| Student_8   |        420 |
+| Student_4   |        480 |
++-------------+------------+
+8 rows in set (0.02 sec)
+
+
