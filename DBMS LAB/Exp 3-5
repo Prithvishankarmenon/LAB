@@ -1,0 +1,489 @@
+17/08/24
+
+Database changed
+mysql> SELECT emp_name FROM work,emp WHERE company_name='SBI' and emp.emp_id=work.emp_id;
++----------+
+| emp_name |
++----------+
+| Adarsh   |
+| Bonny    |
+| Hay      |
+| change   |
+| Jones    |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT emp.emp_name FROM emp,work,company WHERE emp.emp_id=work.emp_id AND work.company_name=company.company_name AND emp.city=company.city;
++----------+
+| emp_name |
++----------+
+| Adarsh   |
+| Bonny    |
+| George   |
+| Hay      |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT emp.emp_name,e2.emp_name"manager name" FROM emp,emp e2,manages WHERE emp.emp_id=manages.emp_id AND e2.Emp_id=manages.manager_id
+AND emp.street_no=e2.street_no AND emp.city=e2.city;
++----------+--------------+
+| emp_name | manager name |
++----------+--------------+
+| Adarsh   | Bonny        |
++----------+--------------+
+1 row in set (0.00 sec)
+mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work  WHERE work.company_name=S.company_name)and emp.emp_id=works.emp_id;
+ERROR 1054 (42S22): Unknown column 'S.company_name' in 'where clause'
+mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_name=S.company_name)and emp.emp_id=works.emp_id;
+ERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_name=S.company_name)and emp.emp_id=work.emp_id;
++----------+--------+--------+
+| emp_name | emp_id | salary |
++----------+--------+--------+
+| Adarsh   | E-101  |  71000 |
+| Bonny    | E-102  |  90000 |
+| Lava     | E-110  | 250000 |
+| Niharika | E-111  |  40000 |
++----------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> ERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+    -> mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_naERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+    -> mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_naERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ;;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+mysql> SELEC' at line 1
+ERROR: 
+No query specified
+
+mysql> SELECT comapny_name.sum(salary)"SALARY PAID"form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM w' at line 1
+mysql> SELECT comapny_name.sum(salary)"SALARY PAID"form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM w' at line 1
+mysql> ;
+ERROR: 
+No query specified
+
+mysql> SELECT comapny_name.sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name);
+ERROR 1630 (42000): FUNCTION comapny_name.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT comapny_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name);
+ERROR 1054 (42S22): Unknown column 'comapny_name' in 'field list'
+mysql> SELECT comapny_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<=alERROR 1054 (42S22): Unknown column 'comapny_name' in 'field list'
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> SELECT comapny_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<= all(SELECT sum(salary)FROM work GROUP
+BY company_name);
+ERROR 1054 (42S22): Unknown column 'comapny_name' in 'field list'
+mysql> SELECT company_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<= all(SELECT sum(salary)FROM work GROUP
+BY company_name);
++--------------+-------------+
+| company_name | SALARY PAID |
++--------------+-------------+
+| Indian Bank  |       28000 |
++--------------+-------------+
+1 row in set (0.01 sec)
+
+mysql> UPDATE work SET salary=salary*1.1 WHERE emp_id in(select manager_id from manages)and company_name='SBI'
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE work SET salary=salary*1.1 WHERE emp_id in(select manager_id from manages)and company_name='SBI';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from work
+    -> ;
++--------+--------------+--------+
+| emp_id | company_name | salary |
++--------+--------------+--------+
+| E-101  | SBI          |  71000 |
+| E-102  | SBI          | 108900 |
+| E-103  | SBT          |  40000 |
+| E-104  | Fedral       |  37000 |
+| E-105  | SBT          |  17000 |
+| E-106  | SBI          |  22000 |
+| E-107  | SBI          |  33000 |
+| E-108  | SBI          |  18000 |
+| E-109  | Indian Bank  |  28000 |
+| E-110  | SBT          | 250000 |
+| E-111  | Fedral       |  40000 |
++--------+--------------+--------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT company_name FROM work GROUP BY company_name HAVING COUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP BYcompany_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT emp_id)FROM work GROUP BYcompany_name)' at line 1
+mysql> SELECT company_name FROM work GROUP BY company_name HAVING COUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP BY company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT emp_id)FROM work GROUP BY company_name)' at line 1
+mysql> SELECT company_name FROM work GROUP BY company_name HAVINGCOUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP BY
+company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'HAVINGCOUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP ' at line 1
+mysql> SELECT company_name FROM work GROUP BY company_name HAVING COUNT(DISTINCT emp_id) >= ALL (SELECT COUNT (DISTINCT emp_id)FROM work GROUP
+ BY company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT emp_id)FROM work GROUP BY company_name)' at line 1
+mysql> 
+mysql> select company_name from work GROUP BY company_name having count(distinct emp_id) >= all(SELECT COUNT (distinct emp_id)from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id)from work group by company_name)' at line 1
+mysql> select company_name from work GROUP BY company_name having count(distinct emp_id ) >= all(SELECT COUNT (distinct emp_id )from work grou
+p by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> 
+mysql> select company_name from work group by company_name having count(distinct emp_id ) >= all(select count (distinct emp_id )from work grou
+p by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> select company_name from work group by company_name having count(distinct emp_id )>=all(select count (distinct emp_id )from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> 
+mysql> select company_name from work group by company_name having avg(salary)>(select avg(salary) from work where company_name='SBT'group by company_name);
+Empty set (0.00 sec)
+
+mysql> select company_name from work group by company_name having avg(salary)>(select avg(salary) from work where company_name='SBI'group by company_name);
++--------------+
+| company_name |
++--------------+
+| SBT          |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='SBI' group by company_name)and emp.emp_id=work.emp
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ;
+ERROR 1054 (42S22): Unknown column 'work.emp' in 'where clause'
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='SBI' group by company_name)and emp.emp_id=work.emp_id;
++----------+--------+
+| emp_name | salary |
++----------+--------+
+| Lava     | 250000 |
++----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='SBT' group by company_name)and emp.emp_id=work.emp_id;
+Empty set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='AXIS' group by company_name)and emp.emp_id=work.emp_id;
+Empty set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='Indian Bank' group by company_name)
+and emp.emp_id=work.emp_id;
++----------+--------+
+| emp_name | salary |
++----------+--------+
+| Adarsh   |  71000 |
+| Bonny    | 108900 |
+| Cat      |  40000 |
+| Glenn    |  37000 |
+| change   |  33000 |
+| Lava     | 250000 |
+| Niharika |  40000 |
++----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select company_name from work group by company_name having count(distinct emp_id )>=all(select count (distinct emp_id )from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> select company_name from work group by company_name having count(distinct emp_id )>=all(select count (distinct emp_id )from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> 
+mysql> select company_name from work group by company_name having count(distinct emp_id)>=all(select count(distinct emp_id)from work group by company_name);
++--------------+
+| company_name |
++--------------+
+| SBI          |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> desc workDatabase changed
+mysql> SELECT emp_name FROM work,emp WHERE company_name='SBI' and emp.emp_id=work.emp_id;
++----------+
+| emp_name |
++----------+
+| Adarsh   |
+| Bonny    |
+| Hay      |
+| change   |
+| Jones    |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT emp.emp_name FROM emp,work,company WHERE emp.emp_id=work.emp_id AND work.company_name=company.company_name AND emp.city=company.city;
++----------+
+| emp_name |
++----------+
+| Adarsh   |
+| Bonny    |
+| George   |
+| Hay      |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT emp.emp_name,e2.emp_name"manager name" FROM emp,emp e2,manages WHERE emp.emp_id=manages.emp_id AND e2.Emp_id=manages.manager_id
+AND emp.street_no=e2.street_no AND emp.city=e2.city;
++----------+--------------+
+| emp_name | manager name |
++----------+--------------+
+| Adarsh   | Bonny        |
++----------+--------------+
+1 row in set (0.00 sec)
+mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work  WHERE work.company_name=S.company_name)and emp.emp_id=works.emp_id;
+ERROR 1054 (42S22): Unknown column 'S.company_name' in 'where clause'
+mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_name=S.company_name)and emp.emp_id=works.emp_id;
+ERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_name=S.company_name)and emp.emp_id=work.emp_id;
++----------+--------+--------+
+| emp_name | emp_id | salary |
++----------+--------+--------+
+| Adarsh   | E-101  |  71000 |
+| Bonny    | E-102  |  90000 |
+| Lava     | E-110  | 250000 |
+| Niharika | E-111  |  40000 |
++----------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> 
+mysql> ERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+    -> mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_naERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+    -> mysql> SELECT emp_name,emp.emp_id,salary FROM work,emp WHERE salary>(SELECT AVG (salary)FROM work S  WHERE work.company_naERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ;;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1054 (42S22): Unknown column 'works.emp_id' in 'where clause'
+mysql> SELEC' at line 1
+ERROR: 
+No query specified
+
+mysql> SELECT comapny_name.sum(salary)"SALARY PAID"form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM w' at line 1
+mysql> SELECT comapny_name.sum(salary)"SALARY PAID"form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM w' at line 1
+mysql> ;
+ERROR: 
+No query specified
+
+mysql> SELECT comapny_name.sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name);
+ERROR 1630 (42000): FUNCTION comapny_name.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+mysql> SELECT comapny_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<=all(SELECT sum(salary)FROM work GROUP BY company_name);
+ERROR 1054 (42S22): Unknown column 'comapny_name' in 'field list'
+mysql> SELECT comapny_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<=alERROR 1054 (42S22): Unknown column 'comapny_name' in 'field list'
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> SELECT comapny_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<= all(SELECT sum(salary)FROM work GROUP
+BY company_name);
+ERROR 1054 (42S22): Unknown column 'comapny_name' in 'field list'
+mysql> SELECT company_name,sum(salary)"SALARY PAID"from work GROUP BY company_name HAVING sum(salary)<= all(SELECT sum(salary)FROM work GROUP
+BY company_name);
++--------------+-------------+
+| company_name | SALARY PAID |
++--------------+-------------+
+| Indian Bank  |       28000 |
++--------------+-------------+
+1 row in set (0.01 sec)
+
+mysql> UPDATE work SET salary=salary*1.1 WHERE emp_id in(select manager_id from manages)and company_name='SBI'
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE work SET salary=salary*1.1 WHERE emp_id in(select manager_id from manages)and company_name='SBI';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from work
+    -> ;
++--------+--------------+--------+
+| emp_id | company_name | salary |
++--------+--------------+--------+
+| E-101  | SBI          |  71000 |
+| E-102  | SBI          | 108900 |
+| E-103  | SBT          |  40000 |
+| E-104  | Fedral       |  37000 |
+| E-105  | SBT          |  17000 |
+| E-106  | SBI          |  22000 |
+| E-107  | SBI          |  33000 |
+| E-108  | SBI          |  18000 |
+| E-109  | Indian Bank  |  28000 |
+| E-110  | SBT          | 250000 |
+| E-111  | Fedral       |  40000 |
++--------+--------------+--------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT company_name FROM work GROUP BY company_name HAVING COUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP BYcompany_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT emp_id)FROM work GROUP BYcompany_name)' at line 1
+mysql> SELECT company_name FROM work GROUP BY company_name HAVING COUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP BY company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT emp_id)FROM work GROUP BY company_name)' at line 1
+mysql> SELECT company_name FROM work GROUP BY company_name HAVINGCOUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP BY
+company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'HAVINGCOUNT(DISTINCT emp_id)>=ALL(SELECT COUNT (DISTINCT emp_id)FROM work GROUP ' at line 1
+mysql> SELECT company_name FROM work GROUP BY company_name HAVING COUNT(DISTINCT emp_id) >= ALL (SELECT COUNT (DISTINCT emp_id)FROM work GROUP
+ BY company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT emp_id)FROM work GROUP BY company_name)' at line 1
+mysql> 
+mysql> select company_name from work GROUP BY company_name having count(distinct emp_id) >= all(SELECT COUNT (distinct emp_id)from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id)from work group by company_name)' at line 1
+mysql> select company_name from work GROUP BY company_name having count(distinct emp_id ) >= all(SELECT COUNT (distinct emp_id )from work grou
+p by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> 
+mysql> select company_name from work group by company_name having count(distinct emp_id ) >= all(select count (distinct emp_id )from work grou
+p by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> select company_name from work group by company_name having count(distinct emp_id )>=all(select count (distinct emp_id )from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> 
+mysql> select company_name from work group by company_name having avg(salary)>(select avg(salary) from work where company_name='SBT'group by company_name);
+Empty set (0.00 sec)
+
+mysql> select company_name from work group by company_name having avg(salary)>(select avg(salary) from work where company_name='SBI'group by company_name);
++--------------+
+| company_name |
++--------------+
+| SBT          |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='SBI' group by company_name)and emp.emp_id=work.emp
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ;
+ERROR 1054 (42S22): Unknown column 'work.emp' in 'where clause'
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='SBI' group by company_name)and emp.emp_id=work.emp_id;
++----------+--------+
+| emp_name | salary |
++----------+--------+
+| Lava     | 250000 |
++----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='SBT' group by company_name)and emp.emp_id=work.emp_id;
+Empty set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='AXIS' group by company_name)and emp.emp_id=work.emp_id;
+Empty set (0.00 sec)
+
+mysql> select emp_name,salary from work,emp where salary>(select max(salary) from work where company_name='Indian Bank' group by company_name)
+and emp.emp_id=work.emp_id;
++----------+--------+
+| emp_name | salary |
++----------+--------+
+| Adarsh   |  71000 |
+| Bonny    | 108900 |
+| Cat      |  40000 |
+| Glenn    |  37000 |
+| change   |  33000 |
+| Lava     | 250000 |
+| Niharika |  40000 |
++----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select company_name from work group by company_name having count(distinct emp_id )>=all(select count (distinct emp_id )from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> select company_name from work group by company_name having count(distinct emp_id )>=all(select count (distinct emp_id )from work group
+by company_name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct emp_id )from work group by company_name)' at line 1
+mysql> 
+mysql> 
+mysql> select company_name from work group by company_name having count(distinct emp_id)>=all(select count(distinct emp_id)from work group by company_name);
++--------------+
+| company_name |
++--------------+
+| SBI          |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> desc work
+    -> ;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| emp_id       | char(8)     | NO   | PRI | NULL    |       |
+| company_name | varchar(18) | NO   | PRI | NULL    |       |
+| salary       | float       | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc emp
+    -> ;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_id    | char(8)     | NO   | PRI | NULL    |       |
+| emp_name  | varchar(18) | YES  |     | NULL    |       |
+| street_no | int         | YES  |     | NULL    |       |
+| city      | varchar(18) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
+
+    -> ;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| emp_id       | char(8)     | NO   | PRI | NULL    |       |
+| company_name | varchar(18) | NO   | PRI | NULL    |       |
+| salary       | float       | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc emp
+    -> ;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_id    | char(8)     | NO   | PRI | NULL    |       |
+| emp_name  | varchar(18) | YES  |     | NULL    |       |
+| street_no | int         | YES  |     | NULL    |       |
+| city      | varchar(18) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
+
