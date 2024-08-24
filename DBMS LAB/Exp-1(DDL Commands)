@@ -102,14 +102,14 @@ mysql> drop table student;
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> desc student;
-ERROR 1146 (42S02): Table 'prithvi.student' doesn't exist
+ERROR 1146 (42S02): Table 'prithvi.student' doesnt exist
 mysql> 
 mysql> 
 mysql> 
 mysql> create table employee
     -> ;
 
-!!!!!!!!!!!!!!!!!!question!!!!!!!!!!!!!!!!! 
+-- !!!!!!!!!!!!!!!!!!question!!!!!!!!!!!!!!!!! 
 
 
 ERROR 4028 (HY000): A table must have at least one visible column.
