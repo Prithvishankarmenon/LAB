@@ -433,7 +433,7 @@ insert into M_Mark value(007,005,60);
 insert into M_Mark value(007,006,60);
 
 insert into M_Mark value(008,001,70);
-insert into M_Mark value(008,002,70);
+insert into M_MSubjectNameark value(008,002,70);
 insert into M_Mark value(008,003,70);
 insert into M_Mark value(008,004,70);
 insert into M_Mark value(008,005,70);
@@ -473,5 +473,141 @@ mysql> select StudentName,sum(mark)"Total mark" from M_Mark,Student where Studen
 | Student_4   |        480 |
 +-------------+------------+
 8 rows in set (0.02 sec)
+
+mysql> select SubjectName,avg(mark)"Avarage_Mark" from Subject,M_Mark
+where Subject.SubjectCode =M_Mark.SubjectCode group by SubjectName;
++-------------+--------------+
+| SubjectName | Avarage_Mark |
++-------------+--------------+
+| Subject_1   |      45.0000 |
+| Subject_2   |      45.0000 |
+| Subject_3   |      45.0000 |
+| Subject_4   |      45.0000 |
+| Subject_5   |      45.0000 |
+| Subject_6   |      45.0000 |
++-------------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE M_Mark ADD FOREIGN KEY (StudentCode) REFERENCES Student(StudentCode);
+mysql> alter table Student add primary key(StudentCode);
+mysql> alter table Faculty add primary key(FacultyCode);
+mysql> alter table Subject add primary key(SubjectCode);
+mysql> ALTER TABLE M_Mark ADD FOREIGN KEY (SubjectCode) REFERENCES Subject(SubjectCode);
+ALTER TABLE Subject ADD FOREIGN KEY (FacultyCode) REFERENCES Faculty(FacultyCode);
+Query OK, 6 rows affected (0.05 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+
+
+
+mysql> select SubjectName"One student less than 40percent" from Subject,M_Mark,Student where M_Mark.mark<40 group by SubjectName HAVING COUNT(DISTINCT Student.StudentCode) >= 1;
++---------------------------------+
+| One student less than 40percent |
++---------------------------------+
+| Subject_1                       |
+| Subject_2                       |
+| Subject_3                       |
+| Subject_4                       |
+| Subject_5                       |
+| Subject_6                       |
++---------------------------------+
+6 rows in set (0.00 sec)
+
+
+
+select StudentName,SubjectName,(M_Mark.mark / Subject.MaxMark) * 100 AS Percent from Subject,M_Mark,Student where M_Mark.Mark<40 and M_Mark.SubjectCode=Subject.SubjectCode and M_Mark.StudentCode=Student.StudentCode;
++-------------+-------------+---------+
+| StudentName | SubjectName | Percent |
++-------------+-------------+---------+
+| Student_1   | Subject_1   | 10.0000 |
+| Student_2   | Subject_1   | 20.0000 |
+| Student_3   | Subject_1   | 30.0000 |
+| Student_1   | Subject_2   | 10.0000 |
+| Student_2   | Subject_2   | 20.0000 |
+| Student_3   | Subject_2   | 30.0000 |
+| Student_1   | Subject_3   | 10.0000 |
+| Student_2   | Subject_3   | 20.0000 |
+| Student_3   | Subject_3   | 30.0000 |
+| Student_1   | Subject_4   | 10.0000 |
+| Student_2   | Subject_4   | 20.0000 |
+| Student_3   | Subject_4   | 30.0000 |
+| Student_1   | Subject_5   | 10.0000 |
+| Student_2   | Subject_5   | 20.0000 |
+| Student_3   | Subject_5   | 30.0000 |
+| Student_1   | Subject_6   | 10.0000 |
+| Student_2   | Subject_6   | 20.0000 |
+| Student_3   | Subject_6   | 30.0000 |
++-------------+-------------+---------+
+18 rows in set (0.00 sec)
+
+
+mysql> select FacultyName,SubjectName from Faculty,Subject where Faculty.FacultyCode=Subject.SubjectCode;
++-------------+-------------+
+| FacultyName | SubjectName |
++-------------+-------------+
+| Teacher_1   | Subject_1   |
+| Teacher_2   | Subject_2   |
+| Teacher_3   | Subject_3   |
+| Teacher_4   | Subject_4   |
+| Teacher_5   | Subject_5   |
+| Teacher_6   | Subject_6   |
++-------------+-------------+
+6 rows in set (0.00 sec)
+
+
+mysql> select StudentName,SubjectName,mark,(M_Mark.mark / Subject.MaxMark) * 100 AS Percent from Subject,M_Mark,Student where M_Mark.SubjectCode=Subject.SubjectCode and M_Mark.StudentCode=Student.StudentCode order by mark;
++-------------+-------------+------+---------+
+| StudentName | SubjectName | mark | Percent |
++-------------+-------------+------+---------+
+| Student_1   | Subject_1   |   10 | 10.0000 |
+| Student_1   | Subject_6   |   10 | 10.0000 |
+| Student_1   | Subject_5   |   10 | 10.0000 |
+| Student_1   | Subject_4   |   10 | 10.0000 |
+| Student_1   | Subject_2   |   10 | 10.0000 |
+| Student_1   | Subject_3   |   10 | 10.0000 |
+| Student_2   | Subject_1   |   20 | 20.0000 |
+| Student_2   | Subject_6   |   20 | 20.0000 |
+| Student_2   | Subject_5   |   20 | 20.0000 |
+| Student_2   | Subject_4   |   20 | 20.0000 |
+| Student_2   | Subject_3   |   20 | 20.0000 |
+| Student_2   | Subject_2   |   20 | 20.0000 |
+| Student_3   | Subject_5   |   30 | 30.0000 |
+| Student_3   | Subject_2   |   30 | 30.0000 |
+| Student_3   | Subject_3   |   30 | 30.0000 |
+| Student_3   | Subject_6   |   30 | 30.0000 |
+| Student_3   | Subject_1   |   30 | 30.0000 |
+| Student_3   | Subject_4   |   30 | 30.0000 |
+| Student_5   | Subject_5   |   40 | 40.0000 |
+| Student_5   | Subject_2   |   40 | 40.0000 |
+| Student_5   | Subject_6   |   40 | 40.0000 |
+| Student_5   | Subject_3   |   40 | 40.0000 |
+| Student_5   | Subject_1   |   40 | 40.0000 |
+| Student_5   | Subject_4   |   40 | 40.0000 |
+| Student_6   | Subject_1   |   50 | 50.0000 |
+| Student_6   | Subject_4   |   50 | 50.0000 |
+| Student_6   | Subject_5   |   50 | 50.0000 |
+| Student_6   | Subject_3   |   50 | 50.0000 |
+| Student_6   | Subject_6   |   50 | 50.0000 |
+| Student_6   | Subject_2   |   50 | 50.0000 |
+| Student_7   | Subject_5   |   60 | 60.0000 |
+| Student_7   | Subject_6   |   60 | 60.0000 |
+| Student_7   | Subject_4   |   60 | 60.0000 |
+| Student_7   | Subject_1   |   60 | 60.0000 |
+| Student_7   | Subject_3   |   60 | 60.0000 |
+| Student_7   | Subject_2   |   60 | 60.0000 |
+| Student_8   | Subject_4   |   70 | 70.0000 |
+| Student_8   | Subject_1   |   70 | 70.0000 |
+| Student_8   | Subject_5   |   70 | 70.0000 |
+| Student_8   | Subject_3   |   70 | 70.0000 |
+| Student_8   | Subject_2   |   70 | 70.0000 |
+| Student_8   | Subject_6   |   70 | 70.0000 |
+| Student_4   | Subject_4   |   80 | 80.0000 |
+| Student_4   | Subject_1   |   80 | 80.0000 |
+| Student_4   | Subject_5   |   80 | 80.0000 |
+| Student_4   | Subject_3   |   80 | 80.0000 |
+| Student_4   | Subject_2   |   80 | 80.0000 |
+| Student_4   | Subject_6   |   80 | 80.0000 |
++-------------+-------------+------+---------+
+48 rows in set (0.00 sec)
 
 
