@@ -39,6 +39,117 @@ mysql> desc Dept;
 +-----------------+-------------+------+-----+---------+-------+
 4 rows in set (0.00 sec)
 
+mysql> insert  into Dept values(1,'Administration',null,'Boston');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert  into Dept values(2,'Marketing',null,'Boston');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert  into Dept values(3,'Purchase',null,'Perryridge');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert  into Dept values(4,'Programming',null,'Hudson');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert  into Dept values(5,'HR',null,'Hudson');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Emp values ('1','Steven','Marketing',24000,'1995-01-06',null,2); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Emp values ('2','Neena','F1_Account',34000,'1987-02-06',null,1); 
+Query OK, 1 row affected (0.00 sec)
+
 mysql> 
+mysql> insert into Emp values ('3','Lex','F1_MGR',240000,'1980-01-06',null,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('4','Alexander','Sa_Rep',20000,'1987-06-06',null,4); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('5','Bruce','IT_PROG',24000,'1990-07-06',null,4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('6','David','IT_PROG',22000,'1991-09-06',null,4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('7','vipin','IT_PROG',28000,'1987-11-16',null,4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('8','Diana','Pur_Man',24000,'1987-01-26',null,3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('9','John','F1_Account',24000,'1992-12-01',null,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('10','Ismael','Clerk',4000,'1994-03-29',null,3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('11','Mathew','Clerk',46000,'1992-10-12',200,3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('12','Hayes','Marketing',14000,'1998-04-21',1000,2); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('13','Sarun','Marketing',14000,'1993-05-18',null,2); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('14','Henin','F1_MGR',240000,'1980-08-06',null,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('15','Greesh','Clerk',240000,'1980-08-06',null,5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Emp;
++--------+-----------+------------+--------+------------+-----------+--------+
+| Emp_id | Emp_name  | job        | salary | hire_date  | commision | Dep_no |
++--------+-----------+------------+--------+------------+-----------+--------+
+|      1 | Steven    | Marketing  |  24000 | 1995-01-06 |      NULL |      2 |
+|      2 | Neena     | F1_Account |  34000 | 1987-02-06 |      NULL |      1 |
+|      3 | Lex       | F1_MGR     | 240000 | 1980-01-06 |      NULL |      1 |
+|      4 | Alexander | Sa_Rep     |  20000 | 1987-06-06 |      NULL |      4 |
+|      5 | Bruce     | IT_PROG    |  24000 | 1990-07-06 |      NULL |      4 |
+|      6 | David     | IT_PROG    |  22000 | 1991-09-06 |      NULL |      4 |
+|      7 | vipin     | IT_PROG    |  28000 | 1987-11-16 |      NULL |      4 |
+|      8 | Diana     | Pur_Man    |  24000 | 1987-01-26 |      NULL |      3 |
+|      9 | John      | F1_Account |  24000 | 1992-12-01 |      NULL |      1 |
+|     10 | Ismael    | Clerk      |   4000 | 1994-03-29 |      NULL |      3 |
+|     11 | Mathew    | Clerk      |  46000 | 1992-10-12 |       200 |      3 |
+|     12 | Hayes     | Marketing  |  14000 | 1998-04-21 |      1000 |      2 |
+|     13 | Sarun     | Marketing  |  14000 | 1993-05-18 |      NULL |      2 |
+|     14 | Henin     | F1_MGR     | 240000 | 1980-08-06 |      NULL |      1 |
+|     15 | Greesh    | Clerk      | 240000 | 1980-08-06 |      NULL |      5 |
++--------+-----------+------------+--------+------------+-----------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from Dept;
++---------------+-----------------+------------+------------+
+| Department_id | Department_name | Manager_id | Loc        |
++---------------+-----------------+------------+------------+
+|             1 | Administration  |       NULL | Boston     |
+|             2 | Marketing       |       NULL | Boston     |
+|             3 | Purchase        |       NULL | Perryridge |
+|             4 | Programming     |       NULL | Hudson     |
+|             5 | HR              |       NULL | Hudson     |
++---------------+-----------------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+
+
 
 
