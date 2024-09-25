@@ -147,7 +147,94 @@ mysql> select * from Dept;
 +---------------+-----------------+------------+------------+
 5 rows in set (0.00 sec)
 
-mysql> 
+mysql> mysql> update Dept set manager_id=2 where Department_id=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Dept set manager_id=1 where Department_id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Dept set manager_id=8 where Department_id=3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Dept set manager_id=7 where Department_id=4;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> select Emp_name,salary from Emp where salary not between 5000 and 35000;
++----------+--------+
+| Emp_name | salary |
++----------+--------+
+| Lex      | 240000 |
+| Ismael   |   4000 |
+| Mathew   |  46000 |mysql> select Emp_name,job from Emp,Dept where Manager_id is null and Emp.Dep_no=Dept.Department_id ;
++----------+-------+
+| Emp_name | job   |
++----------+-------+
+| Greesh   | Clerk |
++----------+-------+
+1 row in set (0.00 sec)
+
+| Henin    | 240000 |
+| Greesh   | 240000 |
++----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select Emp_name,job,hire_date from Emp where hire_date  between '1990-02-20' and '1998-05-01' order by hire_date;
++----------+------------+------------+
+| Emp_name | job        | hire_date  |
++----------+------------+------------+
+| Bruce    | IT_PROG    | 1990-07-06 |
+| David    | IT_PROG    | 1991-09-06 |
+| Mathew   | Clerk      | 1992-10-12 |
+| John     | F1_Account | 1992-12-01 |
+| Sarun    | Marketing  | 1993-05-18 |
+| Ismael   | Clerk      | 1994-03-29 |
+| Steven   | Marketing  | 1995-01-06 |
+| Hayes    | Marketing  | 1998-04-21 |
++----------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select Emp_name'Employee',salary from Emp where salary  between 5000 and 12000 and Dep_no in(2,4);
+Empty set (0.00 sec)
+
+mysql> select Emp_name from Emp where hire_date like '1994-%-%';
++----------+
+| Emp_name |
++----------+
+| Ismael   |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select Emp_name,salary,commision from Emp where commision>0 order by salary desc ,commision desc;
++----------+--------+-----------+
+| Emp_name | salary | commision |
++----------+--------+-----------+
+| Mathew   |  46000 |       200 |
+| Hayes    |  14000 |      1000 |
++----------+--------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select Emp_name,job from Emp,Dept where Manager_id is null and Emp.Dep_no=Dept.Department_id ;
++----------+-------+
+| Emp_name | job   |
++----------+-------+
+| Greesh   | Clerk |
++----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select Emp_name from Emp where Emp_name like '_ _a%';
++----------+
+| Emp_name |
++----------+
+| Diana    |
++----------+
+1 row in set (0.00 sec)
+
+
 
 
 
