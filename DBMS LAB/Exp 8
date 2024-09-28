@@ -1,0 +1,242 @@
+mysql> create table Dept(Department_id int(10)primary key, Department_name varchar(15),Manager_id int(10),Loc varchar(15))
+    -> ;
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> create table Emp(Emp_id int(10)primary key,Emp_name varchar(15),job varchar(15),salary int(10),hire_date date,commision int(7),Dep_no int(10))
+    -> ;
+Query OK, 0 rows affected, 4 warnings (0.02 sec)
+
+mysql> alter table Dept add foreign key (Manager_id) references Emp(Emp_id);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Emp add foreign key (Dep_no) references Dept(Department_id);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Emp_id    | int         | NO   | PRI | NULL    |       |
+| Emp_name  | varchar(15) | YES  |     | NULL    |       |
+| job       | varchar(15) | YES  |     | NULL    |       |
+| salary    | int         | YES  |     | NULL    |       |
+| hire_date | date        | YES  |     | NULL    |       |
+| commision | int         | YES  |     | NULL    |       |
+| Dep_no    | int         | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> desc Dept;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| Department_id   | int         | NO   | PRI | NULL    |       |
+| Department_name | varchar(15) | YES  |     | NULL    |       |
+| Manager_id      | int         | YES  | MUL | NULL    |       |
+| Loc             | varchar(15) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert  into Dept values(1,'Administration',null,'Boston');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert  into Dept values(2,'Marketing',null,'Boston');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert  into Dept values(3,'Purchase',null,'Perryridge');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert  into Dept values(4,'Programming',null,'Hudson');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert  into Dept values(5,'HR',null,'Hudson');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> insert into Emp values ('1','Steven','Marketing',24000,'1995-01-06',null,2); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Emp values ('2','Neena','F1_Account',34000,'1987-02-06',null,1); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('3','Lex','F1_MGR',240000,'1980-01-06',null,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('4','Alexander','Sa_Rep',20000,'1987-06-06',null,4); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('5','Bruce','IT_PROG',24000,'1990-07-06',null,4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('6','David','IT_PROG',22000,'1991-09-06',null,4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('7','vipin','IT_PROG',28000,'1987-11-16',null,4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('8','Diana','Pur_Man',24000,'1987-01-26',null,3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('9','John','F1_Account',24000,'1992-12-01',null,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('10','Ismael','Clerk',4000,'1994-03-29',null,3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('11','Mathew','Clerk',46000,'1992-10-12',200,3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('12','Hayes','Marketing',14000,'1998-04-21',1000,2); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('13','Sarun','Marketing',14000,'1993-05-18',null,2); 
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> insert into Emp values ('14','Henin','F1_MGR',240000,'1980-08-06',null,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> insert into Emp values ('15','Greesh','Clerk',240000,'1980-08-06',null,5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Emp;
++--------+-----------+------------+--------+------------+-----------+--------+
+| Emp_id | Emp_name  | job        | salary | hire_date  | commision | Dep_no |
++--------+-----------+------------+--------+------------+-----------+--------+
+|      1 | Steven    | Marketing  |  24000 | 1995-01-06 |      NULL |      2 |
+|      2 | Neena     | F1_Account |  34000 | 1987-02-06 |      NULL |      1 |
+|      3 | Lex       | F1_MGR     | 240000 | 1980-01-06 |      NULL |      1 |
+|      4 | Alexander | Sa_Rep     |  20000 | 1987-06-06 |      NULL |      4 |
+|      5 | Bruce     | IT_PROG    |  24000 | 1990-07-06 |      NULL |      4 |
+|      6 | David     | IT_PROG    |  22000 | 1991-09-06 |      NULL |      4 |
+|      7 | vipin     | IT_PROG    |  28000 | 1987-11-16 |      NULL |      4 |
+|      8 | Diana     | Pur_Man    |  24000 | 1987-01-26 |      NULL |      3 |
+|      9 | John      | F1_Account |  24000 | 1992-12-01 |      NULL |      1 |
+|     10 | Ismael    | Clerk      |   4000 | 1994-03-29 |      NULL |      3 |
+|     11 | Mathew    | Clerk      |  46000 | 1992-10-12 |       200 |      3 |
+|     12 | Hayes     | Marketing  |  14000 | 1998-04-21 |      1000 |      2 |
+|     13 | Sarun     | Marketing  |  14000 | 1993-05-18 |      NULL |      2 |
+|     14 | Henin     | F1_MGR     | 240000 | 1980-08-06 |      NULL |      1 |
+|     15 | Greesh    | Clerk      | 240000 | 1980-08-06 |      NULL |      5 |
++--------+-----------+------------+--------+------------+-----------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from Dept;
++---------------+-----------------+------------+------------+
+| Department_id | Department_name | Manager_id | Loc        |
++---------------+-----------------+------------+------------+
+|             1 | Administration  |       NULL | Boston     |
+|             2 | Marketing       |       NULL | Boston     |
+|             3 | Purchase        |       NULL | Perryridge |
+|             4 | Programming     |       NULL | Hudson     |
+|             5 | HR              |       NULL | Hudson     |
++---------------+-----------------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> mysql> update Dept set manager_id=2 where Department_id=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Dept set manager_id=1 where Department_id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Dept set manager_id=8 where Department_id=3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Dept set manager_id=7 where Department_id=4;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> select Emp_name,salary from Emp where salary not between 5000 and 35000;
++----------+--------+
+| Emp_name | salary |
++----------+--------+
+| Lex      | 240000 |
+| Ismael   |   4000 |
+| Mathew   |  46000 |mysql> select Emp_name,job from Emp,Dept where Manager_id is null and Emp.Dep_no=Dept.Department_id ;
++----------+-------+
+| Emp_name | job   |
++----------+-------+
+| Greesh   | Clerk |
++----------+-------+
+1 row in set (0.00 sec)
+
+| Henin    | 240000 |
+| Greesh   | 240000 |
++----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select Emp_name,job,hire_date from Emp where hire_date  between '1990-02-20' and '1998-05-01' order by hire_date;
++----------+------------+------------+
+| Emp_name | job        | hire_date  |
++----------+------------+------------+
+| Bruce    | IT_PROG    | 1990-07-06 |
+| David    | IT_PROG    | 1991-09-06 |
+| Mathew   | Clerk      | 1992-10-12 |
+| John     | F1_Account | 1992-12-01 |
+| Sarun    | Marketing  | 1993-05-18 |
+| Ismael   | Clerk      | 1994-03-29 |
+| Steven   | Marketing  | 1995-01-06 |
+| Hayes    | Marketing  | 1998-04-21 |
++----------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select Emp_name'Employee',salary from Emp where salary  between 5000 and 12000 and Dep_no in(2,4);
+Empty set (0.00 sec)
+
+mysql> select Emp_name from Emp where hire_date like '1994-%-%';
++----------+
+| Emp_name |
++----------+
+| Ismael   |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select Emp_name,salary,commision from Emp where commision>0 order by salary desc ,commision desc;
++----------+--------+-----------+
+| Emp_name | salary | commision |
++----------+--------+-----------+
+| Mathew   |  46000 |       200 |
+| Hayes    |  14000 |      1000 |
++----------+--------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select Emp_name,job from Emp,Dept where Manager_id is null and Emp.Dep_no=Dept.Department_id ;
++----------+-------+
+| Emp_name | job   |
++----------+-------+
+| Greesh   | Clerk |
++----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select Emp_name from Emp where Emp_name like '_ _a%';
++----------+
+| Emp_name |
++----------+
+| Diana    |
++----------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
